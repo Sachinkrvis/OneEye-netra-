@@ -91,9 +91,7 @@ class MainActivity : ComponentActivity() {
 
                 }
             }
-
         }
-
     }
     private fun hasCameraPermission() = ContextCompat.checkSelfPermission(
         this,Manifest.permission.CAMERA
