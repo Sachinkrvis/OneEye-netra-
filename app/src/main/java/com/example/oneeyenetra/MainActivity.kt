@@ -70,13 +70,14 @@ class MainActivity : ComponentActivity() {
                     CameraPreview(controller = controller, modifier = Modifier.fillMaxSize())
                     DetectionOverlay(
                         classifications = classifications,
-//                        classifications = listOf("Person", "Car", "Dog"), // Example data
                         boundingBoxes = listOf(
-                            RectF(0.1f, 0.1f, 0.3f, 0.3f),
-                            RectF(0.5f, 0.2f, 0.7f, 0.4f),
-                            RectF(0.6f, 0.5f, 0.9f, 0.7f)
+                            RectF(0.1f, 0.2f, 0.3f, 0.4f), // Example normalized bounding box
+                            RectF(0.4f, 0.5f, 0.6f, 0.7f),
+                            RectF(0.7f, 0.1f, 0.9f, 0.3f)
                         ),
-                        modifier = Modifier.align(Alignment.Center),
+                        onObjectPositionDetected = { label, position ->
+                            android.util.Log.d("Feedback", "Detected $label at $position")
+                        }
                     )
                     Column(
                         modifier = Modifier
